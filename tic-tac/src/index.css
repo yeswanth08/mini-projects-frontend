@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+#grid-cell {
+    width: 100px;
+    height: 100px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    text-align: center;
+    padding-bottom: 23px;
+    font-size: 60px;
+    caret-color: transparent;
+    @apply bg-red-300;
+    @apply hover:bg-green-400;
+}
+
+#grid{
+    width: 300px;
+    margin-top: 200px;
+    margin-left: 36%;
+    justify-items: center;
+    @apply grid grid-cols-3 gap-1;
+    @apply opacity-60;
+}
