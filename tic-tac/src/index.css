@@ -19,6 +19,7 @@
     margin-top: 200px;
     margin-left: 36%;
     justify-items: center;
-    @apply grid grid-cols-3 gap-1;
+    @apply grid grid-rows-3 grid-cols-3 gap-1;
     @apply opacity-60;
 }
+
