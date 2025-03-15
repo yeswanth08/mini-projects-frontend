@@ -31,30 +31,35 @@ interface gridProps {
   function Grid({ status, xTurn, setStatus, setxTurn }: gridProps): React.JSX.Element {
     const [grid, setGrid] = useState<string[][]>([['', '', ''], ['', '', ''], ['', '', '']]);
     return (
-      <div id="grid">
-        {grid.map((row, rowIndex) => {
-          return (
-            <div key={rowIndex}>
-              {row.map((col, colIndex) => {
-                return (
-                  <Cell
-                    key={`${rowIndex}-${colIndex}`}
-                    row={rowIndex}
-                    col={colIndex}
-                    status={status}
-                    setStatus={setStatus}
-                    grid={grid}
-                    setGrid={setGrid}
-                    xTurn={xTurn}
-                    setxTurn={setxTurn}
-                  />
-                );
-              })}
-            </div>
-          );
-        })}
+      <div id='main-card'>
+              <div id="grid">
+                {grid.map((row, rowIndex) => {
+                  return (
+                    <div key={rowIndex}>
+                      {row.map((_, colIndex) => {
+                        return (
+                          <Cell
+                            key={`${rowIndex}-${colIndex}`}
+                            row={rowIndex}
+                            col={colIndex}
+                            status={status}
+                            setStatus={setStatus}
+                            grid={grid}
+                            setGrid={setGrid}
+                            xTurn={xTurn}
+                            setxTurn={setxTurn}
+                          />
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+              <div>
+                
+              </div>
       </div>
-    );
+    )
   }
   
   function Cell({
