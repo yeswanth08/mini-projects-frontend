@@ -12,6 +12,7 @@ function Dashboard():React.JSX.Element{
 
     const[isFriend,setIsFriend] = useState<boolean>(false);
     const formRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
     
     useEffect(()=>{
         if (isFriend && formRef.current) {
@@ -26,11 +27,14 @@ function Dashboard():React.JSX.Element{
         <div id="dashboard">
             <div id="text-box">Welcome to tic-tac-toe</div>
             <div id="choice">
-                <button type="button" id="btn">Play with Ai 🔥</button>
+                <button 
+                    type="button" 
+                    id="btn"
+                    onClick={()=>navigate('/ai-game')}
+                >Play with Ai 🔥</button>
                 <button type="button" id="btn" onClick={
                     ()=>{setIsFriend(true)}
                 }>Play with a Friend 🚀</button>
-                {/* conditional rendering */}
                 {isFriend && <Form ref={formRef}/>}
             </div>
         </div>

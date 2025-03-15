@@ -128,7 +128,7 @@ interface gridProps {
     if (status === "solved") {
       let player = "X";
       if (!xTurn) player = "O";
-      window.alert(`${"Game Solved 🚀"}${player} won`);
+      window.alert(`Game Solved 🚀${player} won`);
       return;
     }
     if ((xTurn && value !== "x") || (!xTurn && value !== "o")) return;
@@ -140,7 +140,7 @@ interface gridProps {
       setStatus("solved");
       let player = "X";
       if (!xTurn) player = "O";
-      window.alert(`${"Game Solved 🚀"}${player} won`);
+      window.alert(`Game Solved 🚀${player} won`);
       return;
     }
     setxTurn(!xTurn);
