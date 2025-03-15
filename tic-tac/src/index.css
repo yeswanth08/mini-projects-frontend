@@ -16,11 +16,17 @@
 
 #grid{
     width: 300px;
-    margin-top: 100px;
-    margin-left: 36%;
+    height: 100px;
     justify-items: center;
-    @apply grid grid-rows-3 grid-cols-3 gap-1;
+    margin-left: 200px;
+    @apply grid grid-cols-3 gap-1;
     @apply opacity-60;
+}
+
+#main-card{
+    margin-top: 300px;
+    justify-content: space-evenly;
+    @apply grid grid-cols-2
 }
 
 #text-box{
@@ -65,4 +71,16 @@
     margin-right: 20px;
     caret-color: transparent;
     font-size: larger;
+}
+
+#player-details{
+    margin-left: 180px;
+    font-size: larger;
+    justify-content: space-between;
+    @apply grid grid-cols-2 gap-2;
+}
+
+#sign{
+    margin-top: 40px;
+    margin-left: 30px;
 }

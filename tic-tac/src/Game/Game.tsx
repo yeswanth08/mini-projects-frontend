@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import '../index.css';
+import { useSelector } from 'react-redux';
+import { getPlayerOneState, getPlayerTwoState } from '../redux/selectors/playerselectors';
 
 interface gridProps {
     status: string;
@@ -20,18 +22,24 @@ interface gridProps {
   }
   
   function Game(): React.JSX.Element {
+
     const [status, setStatus] = useState<string>("unsolved");
     const [xTurn, setxTurn] = useState<boolean>(true);
   
     return (
       <Grid status={status} xTurn={xTurn} setStatus={setStatus} setxTurn={setxTurn} />
     );
+
   }
   
   function Grid({ status, xTurn, setStatus, setxTurn }: gridProps): React.JSX.Element {
+
     const [grid, setGrid] = useState<string[][]>([['', '', ''], ['', '', ''], ['', '', '']]);
+    const playerOneState = useSelector(getPlayerOneState);
+    const playerTwoState = useSelector(getPlayerTwoState);
+
     return (
-      <div id='main-card'>
+      <div id="main-card">
               <div id="grid">
                 {grid.map((row, rowIndex) => {
                   return (
@@ -55,8 +63,19 @@ interface gridProps {
                   );
                 })}
               </div>
-              <div>
-                
+              <div id="player-details">
+                <div>
+                {playerOneState} 
+                  <div id='sign'>
+                    X
+                  </div>
+                </div>
+                <div>
+                {playerTwoState}
+                <div id='sign'>
+                    O
+                  </div>
+                </div>
               </div>
       </div>
     )
@@ -73,6 +92,7 @@ interface gridProps {
     setxTurn
   }: cellProps): React.JSX.Element {
     return (
+
       <input
         id="grid-cell"
         value={grid[row][col]}
@@ -104,8 +124,11 @@ interface gridProps {
     row,
     col
   }: handleProps): void {
+
     if (status === "solved") {
-      window.alert("Game Solved 🚀");
+      let player = "X";
+      if (!xTurn) player = "O";
+      window.alert(`${"Game Solved 🚀"}${player} won`);
       return;
     }
     if ((xTurn && value !== "x") || (!xTurn && value !== "o")) return;
@@ -115,13 +138,16 @@ interface gridProps {
     setGrid(newGrid);
     if (checkGrid(newGrid, value)) {
       setStatus("solved");
-      window.alert("Game Solved 🚀");
+      let player = "X";
+      if (!xTurn) player = "O";
+      window.alert(`${"Game Solved 🚀"}${player} won`);
       return;
     }
     setxTurn(!xTurn);
   }
   
   function checkGrid(grid: string[][], value: string): boolean {
+
       if (grid[0][1]===value && grid[0][2]===value && grid[0][0]===value) return true;
       if (grid[1][0]===value && grid[2][0]===value && grid[0][0]===value) return true;
       if (grid[1][1]===value && grid[2][2]===value && grid[0][0]===value) return true;
